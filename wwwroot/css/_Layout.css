@@ -1,0 +1,135 @@
+﻿/* Please see documentation at https://learn.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+
+html {
+  font-family: 'Public Sans';
+}
+
+a.navbar-brand {
+  white-space: normal;
+  text-align: center;
+  word-break: break-all;
+}
+
+a {
+  color: #0077cc;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+
+.border-top {
+  border-top: 1px solid #e5e5e5;
+}
+.border-bottom {
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.box-shadow {
+  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+button.accept-policy {
+  font-size: 1rem;
+  line-height: inherit;
+}
+
+/* Header Styles */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 2rem;
+  background: #fff;
+  box-shadow: 0 2px 8px 0 rgba(16, 30, 54, 0.04);
+}
+header .font-bold {
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+header nav {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+}
+header nav a {
+  color: #222;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.2s;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+}
+header nav a:hover {
+  text-decoration: none;
+  color: #e11d48;
+  background: #fdf2f8;
+}
+header nav button {
+  background: #e11d48;
+  color: #fff;
+  font-weight: 600;
+  padding: 0.5rem 1.25rem;
+  border: none;
+  border-radius: 0.5rem;
+  transition: background 0.2s;
+  box-shadow: 0 1px 2px 0 rgba(16, 30, 54, 0.04);
+}
+header nav button:hover {
+  background: #be123c;
+}
+
+/* Footer Styles */
+.footer {
+  padding: 2rem 0;
+  width: 100%;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  margin-top: 0;
+  display: block;
+  box-sizing: border-box;
+  z-index: 50;
+}
+.footer-links {
+  margin-bottom: 1.5rem;
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+}
+.footer-links a {
+  color: #8d5757;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.footer-links a:hover {
+  color: #be123c;
+}
+.social-icons {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+  gap: 1.5rem;
+}
+.social-icons a {
+  color: #8d5757;
+  transition: color 0.2s;
+}
+.social-icons a:hover {
+  color: red;
+}
+.copyright {
+  text-align: center;
+  font-size: 0.875rem;
+  color: #8d5757;
+}
