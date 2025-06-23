@@ -93,7 +93,7 @@ header nav button:hover {
 .footer {
   padding: 2rem 0;
   width: 100%;
-  position: fixed;
+  /* position: fixed; */
   left: 0;
   bottom: 0;
   margin-top: 0;

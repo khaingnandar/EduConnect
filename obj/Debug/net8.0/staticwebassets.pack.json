@@ -17,6 +17,10 @@
       "PackagePath": "staticwebassets/css/tailwind-output.css"
     },
     {
+      "Id": "/Users/khaingnandar/EduConnect/EduConnect/EduConnect/wwwroot/css/universities.css",
+      "PackagePath": "staticwebassets/css/universities.css"
+    },
+    {
       "Id": "/Users/khaingnandar/EduConnect/EduConnect/EduConnect/wwwroot/favicon.ico",
       "PackagePath": "staticwebassets/favicon.ico"
     },
@@ -43,6 +47,26 @@
     {
       "Id": "/Users/khaingnandar/EduConnect/EduConnect/EduConnect/wwwroot/images/symposium.png",
       "PackagePath": "staticwebassets/images/symposium.png"
+    },
+    {
+      "Id": "/Users/khaingnandar/EduConnect/EduConnect/EduConnect/wwwroot/images/uni_1.png",
+      "PackagePath": "staticwebassets/images/uni_1.png"
+    },
+    {
+      "Id": "/Users/khaingnandar/EduConnect/EduConnect/EduConnect/wwwroot/images/uni_2.png",
+      "PackagePath": "staticwebassets/images/uni_2.png"
+    },
+    {
+      "Id": "/Users/khaingnandar/EduConnect/EduConnect/EduConnect/wwwroot/images/uni_3.png",
+      "PackagePath": "staticwebassets/images/uni_3.png"
+    },
+    {
+      "Id": "/Users/khaingnandar/EduConnect/EduConnect/EduConnect/wwwroot/images/uni_4.png",
+      "PackagePath": "staticwebassets/images/uni_4.png"
+    },
+    {
+      "Id": "/Users/khaingnandar/EduConnect/EduConnect/EduConnect/wwwroot/images/uni_5.png",
+      "PackagePath": "staticwebassets/images/uni_5.png"
     },
     {
       "Id": "/Users/khaingnandar/EduConnect/EduConnect/EduConnect/wwwroot/js/site.js",

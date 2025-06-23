@@ -1,85 +1,141 @@
 @{
     ViewData["Title"] = "Explore Universities";
+    var universities = new[] {
+        new { Name = "Stanford University", Desc = "Located in the heart of Silicon Valley, Stanford is renowned for its innovation and entrepreneurship programs.", Img = Url.Content("~/images/uni_1.png"), Url = "https://www.stanford.edu/", Alt = "Stanford", Location = "USA", Program = "Engineering" },
+        new { Name = "Massachusetts Institute of Technology (MIT)", Desc = "MIT is a global leader in science and technology, offering cutting-edge research opportunities.", Img = Url.Content("~/images/uni_2.png"), Url = "https://web.mit.edu/", Alt = "MIT", Location = "USA", Program = "Science" },
+        new { Name = "University of Oxford", Desc = "Oxford is one of the oldest universities in the English-speaking world, known for its rich history and academic excellence.", Img = Url.Content("~/images/uni_3.png"), Url = "https://www.ox.ac.uk/", Alt = "Oxford", Location = "UK", Program = "Humanities" },
+        new { Name = "California Institute of Technology (Caltech)", Desc = "Caltech is a leading science and engineering institute, known for its rigorous academic environment.", Img = Url.Content("~/images/uni_4.png"), Url = "https://www.caltech.edu/", Alt = "Caltech", Location = "USA", Program = "Engineering" },
+        new { Name = "Harvard University", Desc = "Harvard is a prestigious Ivy League university with a wide range of academic programs and a strong alumni network.", Img = Url.Content("~/images/uni_5.png"), Url = "https://www.harvard.edu/", Alt = "Harvard", Location = "USA", Program = "Law" },
+        new { Name = "University of Cambridge", Desc = "Cambridge is a world-leading university with a reputation for outstanding academic achievement.", Img = Url.Content("~/images/uni_5.png"), Url = "https://www.cam.ac.uk/", Alt = "Cambridge", Location = "UK", Program = "Science" },
+        new { Name = "Princeton University", Desc = "Princeton is known for its commitment to undergraduate teaching and research.", Img = Url.Content("~/images/uni_4.png"), Url = "https://www.princeton.edu/", Alt = "Princeton", Location = "USA", Program = "Mathematics" },
+        new { Name = "Yale University", Desc = "Yale is an Ivy League university with a strong tradition in the arts and humanities.", Img = Url.Content("~/images/uni_3.png"), Url = "https://www.yale.edu/", Alt = "Yale", Location = "USA", Program = "Arts" },
+        new { Name = "University of Chicago", Desc = "The University of Chicago is known for its rigorous scholarship and notable alumni.", Img = Url.Content("~/images/uni_2.png"), Url = "https://www.uchicago.edu/", Alt = "Chicago", Location = "USA", Program = "Economics" },
+        new { Name = "Imperial College London", Desc = "Imperial specializes in science, engineering, medicine, and business.", Img = Url.Content("~/images/uni_1.png"), Url = "https://www.imperial.ac.uk/", Alt = "Imperial", Location = "UK", Program = "Engineering" },
+        new { Name = "ETH Zurich", Desc = "ETH Zurich is a leading science and technology university in Switzerland.", Img = Url.Content("~/images/uni_1.png"), Url = "https://ethz.ch/en.html", Alt = "ETH Zurich", Location = "Switzerland", Program = "Engineering" },
+        new { Name = "University of Toronto", Desc = "U of T is Canada's top university, known for research and innovation.", Img = Url.Content("~/images/uni_2.png"), Url = "https://www.utoronto.ca/", Alt = "Toronto", Location = "Canada", Program = "Science" },
+        new { Name = "Columbia University", Desc = "Columbia is an Ivy League university located in New York City.", Img = Url.Content("~/images/uni_3.png"), Url = "https://www.columbia.edu/", Alt = "Columbia", Location = "USA", Program = "Business" },
+        new { Name = "University of Melbourne", Desc = "Melbourne is Australia's leading university, known for its research impact.", Img = Url.Content("~/images/uni_4.png"), Url = "https://www.unimelb.edu.au/", Alt = "Melbourne", Location = "Australia", Program = "Science" },
+        new { Name = "National University of Singapore (NUS)", Desc = "NUS is Asia's top university, offering a global approach to education and research.", Img = Url.Content("~/images/uni_5.png"), Url = "https://www.nus.edu.sg/", Alt = "NUS", Location = "Singapore", Program = "Engineering" }
+    };
+    int pageSize = 5;
+    int totalPages = (int)Math.Ceiling(universities.Length / (double)pageSize);
+    var locations = universities.Select(u => u.Location).Distinct().OrderBy(x => x).ToArray();
+    var programs = universities.Select(u => u.Program).Distinct().OrderBy(x => x).ToArray();
 }
 <section class="universities-section mb-12">
 <div class="max-w-4xl mx-auto py-6">
     <h2 class="text-3xl font-bold mb-2 text-gray-800">Explore Universities</h2>
     <p class="text-gray-600 mb-6">Discover top universities around the world. Refine your search using filters to find the perfect fit for your academic goals.</p>
     <!-- Search and Filters -->
-    <div class="bg-gray-100 rounded-lg p-4 mb-6 flex flex-col gap-3">
-        <div class="flex items-center gap-2">
-            <span class="material-icons text-gray-400">search</span>
-            <input type="text" placeholder="Search for universities" class="flex-1 bg-transparent outline-none px-2 py-1" />
-        </div>
-        <div class="flex flex-wrap gap-3 mt-2">
-            <select class="bg-white border border-gray-300 rounded px-3 py-2 text-sm">
-                <option>Location</option>
+    <div class="bg-gray-100 rounded-lg p-4 mb-6">
+        <div class="search-filter-group relative mb-2">
+            <span class="material-icons search-input-icon">search</span>
+            <input id="searchInput" type="text" placeholder="Search for universities" class="search-input" />
+            <select id="locationFilter" class="filter-select">
+                <option value="">All Locations</option>
+                @foreach (var loc in locations)
+                {
+                    <option value="@loc">@loc</option>
+                }
             </select>
-            <select class="bg-white border border-gray-300 rounded px-3 py-2 text-sm">
-                <option>Programs</option>
-            </select>
-            <select class="bg-white border border-gray-300 rounded px-3 py-2 text-sm">
-                <option>Admission Criteria</option>
+            <select id="programFilter" class="filter-select">
+                <option value="">All Programs</option>
+                @foreach (var prog in programs)
+                {
+                    <option value="@prog">@prog</option>
+                }
             </select>
         </div>
     </div>
     <!-- Featured Universities -->
     <h2 class="text-xl font-semibold mb-4">Featured Universities</h2>
-    <div class="news-events-flex">
-        <div class="news-event-info-col">
-            <div class="news-event-info-block">
-                <h3 class="news-event-title">Stanford University</h3>
-                <p class="news-event-desc">Located in the heart of Silicon Valley, Stanford is renowned for its innovation and entrepreneurship programs.</p>
-                <button class="view-profile-btn mt-3">View Profile</button>
-            </div>
-            <div class="news-event-info-block">
-                <h3 class="news-event-title">Massachusetts Institute of Technology (MIT)</h3>
-                <p class="news-event-desc">MIT is a global leader in science and technology, offering cutting-edge research opportunities.</p>
-                <button class="view-profile-btn mt-3">View Profile</button>
-            </div>
-            <div class="news-event-info-block">
-                <h3 class="news-event-title">University of Oxford</h3>
-                <p class="news-event-desc">Oxford is one of the oldest universities in the English-speaking world, known for its rich history and academic excellence.</p>
-                <button class="view-profile-btn mt-3">View Profile</button>
-            </div>
-            <div class="news-event-info-block">
-                <h3 class="news-event-title">California Institute of Technology (Caltech)</h3>
-                <p class="news-event-desc">Caltech is a leading science and engineering institute, known for its rigorous academic environment.</p>
-                <button class="view-profile-btn mt-3">View Profile</button>
-            </div>
-            <div class="news-event-info-block">
-                <h3 class="news-event-title">Harvard University</h3>
-                <p class="news-event-desc">Harvard is a prestigious Ivy League university with a wide range of academic programs and a strong alumni network.</p>
-                <button class="view-profile-btn mt-3">View Profile</button>
-            </div>
-        </div>
-        <div class="news-event-img-col">
-            <div class="news-event-img-block">
-                <img src="~/images/uni_1.png" alt="Stanford" class="news-event-img" />
-            </div>
-            <div class="news-event-img-block">
-                <img src="~/images/uni_2.png" alt="MIT" class="news-event-img" />
-            </div>
-            <div class="news-event-img-block">
-                <img src="~/images/uni_3.png" alt="Oxford" class="news-event-img" />
-            </div>
-            <div class="news-event-img-block">
-                <img src="~/images/uni_4.png" alt="Caltech" class="news-event-img" />
-            </div>
-            <div class="news-event-img-block">
-                <img src="~/images/uni_5.png" alt="Harvard" class="news-event-img" />
-            </div>
-        </div>
+    <div class="news-events-flex" id="universities-list">
+        <!-- JS will render universities here -->
     </div>
     <!-- Pagination -->
-    <div class="flex justify-center items-center gap-2 mt-10">
-        <button class="w-8 h-8 flex items-center justify-center rounded-full text-gray-400 hover:bg-gray-200">&lt;</button>
-        <button class="w-8 h-8 flex items-center justify-center rounded-full bg-gray-200 text-gray-700">1</button>
-        <button class="w-8 h-8 flex items-center justify-center rounded-full text-gray-700 hover:bg-gray-200">2</button>
-        <button class="w-8 h-8 flex items-center justify-center rounded-full text-gray-700 hover:bg-gray-200">3</button>
-        <button class="w-8 h-8 flex items-center justify-center rounded-full text-gray-700 hover:bg-gray-200">4</button>
-        <button class="w-8 h-8 flex items-center justify-center rounded-full text-gray-700 hover:bg-gray-200">5</button>
-        <button class="w-8 h-8 flex items-center justify-center rounded-full text-gray-400 hover:bg-gray-200">&gt;</button>
+    <div class="flex justify-center items-center gap-2 mt-10" id="pagination">
+        <!-- JS will render pagination here -->
     </div>
 </div>
 </section>
+<script>
+    const universities = @Html.Raw(System.Text.Json.JsonSerializer.Serialize(universities));
+    const pageSize = @pageSize;
+    let page = 1;
+    let filtered = universities;
+
+    function filterUniversities() {
+        const search = document.getElementById('searchInput').value.trim().toLowerCase();
+        const location = document.getElementById('locationFilter').value;
+        const program = document.getElementById('programFilter').value;
+        filtered = universities.filter(u => {
+            const matchesSearch = u.Name.toLowerCase().includes(search) || u.Desc.toLowerCase().includes(search);
+            const matchesLocation = !location || u.Location === location;
+            const matchesProgram = !program || u.Program === program;
+            return matchesSearch && matchesLocation && matchesProgram;
+        });
+        page = 1;
+        renderUniversities();
+        renderPagination();
+    }
+
+    function renderUniversities() {
+        const start = (page - 1) * pageSize;
+        const pagedUnis = filtered.slice(start, start + pageSize);
+
+        let infoCol = '';
+        let imgCol = '';
+        if (pagedUnis.length !=0){
+            pagedUnis.forEach(u => {
+                infoCol += `
+                    <div class="news-event-info-block">
+                        <h3 class="news-event-title">${u.Name}</h3>
+                        <p class="news-event-desc">${u.Desc}</p>
+                        <button class="view-profile-btn mt-3" onclick="window.open('${u.Url}', '_blank')">View Profile</button>
+                    </div>
+                `;
+                imgCol += `
+                    <div class="news-event-img-block">
+                        <img src="${u.Img}" alt="${u.Alt}" class="news-event-img" />
+                    </div>
+                `;
+            });
+        }
+        document.getElementById('universities-list').innerHTML = `
+            <div class="news-event-info-col">${infoCol}</div>
+            <div class="news-event-img-col">${imgCol}</div>
+        `;
+    }
+
+    function renderPagination() {
+        const totalPages = Math.ceil(filtered.length / pageSize) || 1;
+        // Hide pagination if no record
+        if (filtered.length === 0) {
+            document.getElementById('pagination').innerHTML = '';
+            return;
+        }
+        let html = '';
+        html += `<button class="w-8 h-8 flex items-center justify-center rounded-full text-gray-400 hover:bg-gray-200" ${page === 1 ? 'disabled' : ''} onclick="gotoPage(${page - 1})">&lt;</button>`;
+        for (let i = 1; i <= totalPages; i++) {
+            html += `<button class="w-8 h-8 flex items-center justify-center rounded-full ${i === page ? 'bg-gray-200 text-gray-700' : 'text-gray-700 hover:bg-gray-200'}" onclick="gotoPage(${i})">${i}</button>`;
+        }
+        html += `<button class="w-8 h-8 flex items-center justify-center rounded-full text-gray-400 hover:bg-gray-200" ${page === totalPages ? 'disabled' : ''} onclick="gotoPage(${page + 1})">&gt;</button>`;
+        document.getElementById('pagination').innerHTML = html;
+    }
+
+    function gotoPage(p) {
+        const totalPages = Math.ceil(filtered.length / pageSize) || 1;
+        if (p < 1 || p > totalPages) return;
+        page = p;
+        renderUniversities();
+        renderPagination();
+    }
+
+    // Event listeners
+    document.addEventListener('DOMContentLoaded', function() {
+        document.getElementById('searchInput').addEventListener('input', filterUniversities);
+        document.getElementById('locationFilter').addEventListener('change', filterUniversities);
+        document.getElementById('programFilter').addEventListener('change', filterUniversities);
+        filterUniversities();
+    });
+</script>

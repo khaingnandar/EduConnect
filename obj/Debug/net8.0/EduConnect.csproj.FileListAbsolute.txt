@@ -28,3 +28,4 @@
 /Users/khaingnandar/EduConnect/EduConnect/EduConnect/obj/Debug/net8.0/EduConnect.pdb
 /Users/khaingnandar/EduConnect/EduConnect/EduConnect/obj/Debug/net8.0/EduConnect.genruntimeconfig.cache
 /Users/khaingnandar/EduConnect/EduConnect/EduConnect/obj/Debug/net8.0/ref/EduConnect.dll
+/Users/khaingnandar/EduConnect/EduConnect/EduConnect/obj/Debug/net8.0/EduConnect.sourcelink.json

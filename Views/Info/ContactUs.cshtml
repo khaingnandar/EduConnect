@@ -1,0 +1,56 @@
+@{
+    ViewData["Title"] = "Contact Us";
+}
+
+<link rel="stylesheet" href="~/css/contact.css" asp-append-version="true" />
+
+<section class="max-w-2xl mx-auto py-10">
+    <h1 class="text-3xl font-bold mb-4">Contact Us</h1>
+    <p class="mb-6">Have questions or need support? Reach out to us using the information below.</p>
+    <div class="contact-info">
+        <div>
+            <strong>Email:</strong> <a href="mailto:support@educonnect.com" class="text-blue-600 underline">support@educonnect.com</a>
+        </div>
+        <div>
+            <strong>Phone:</strong> <a href="tel:+1234567890" class="text-blue-600 underline">+1 (234) 567-890</a>
+        </div>
+        <div class="flex items-start">
+            <span class="inline-block bg-blue-100 text-blue-700 rounded-full p-2 mr-3 mt-1">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17.657 16.657L13.414 12.414a2 2 0 00-2.828 0l-4.243 4.243a8 8 0 1111.314 0z"/><path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+            </span>
+            <div>
+                <strong>Address:</strong>
+                <div class="ml-2 text-gray-700 leading-relaxed" style="line-height: 2">
+                    EduConnect Headquarters<br />
+                    123 University Ave, Building B, 4th Floor<br />
+                    Suite 402, Downtown District<br />
+                    Cityville, State 12345<br />
+                    Country
+                </div>
+            </div>
+        </div>
+        <div>
+            <strong>Office Hours:</strong> Monday - Friday, 9:00 AM - 5:00 PM
+        </div>
+    </div>
+    <div class="contact-form-container">
+        <h2>Send us a message</h2>
+        <form class="contact-form">
+            <div>
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" placeholder="Your Name" required />
+            </div>
+            <div>
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="you@email.com" required />
+            </div>
+            <div>
+                <label for="message">Message</label>
+                <textarea id="message" name="message" rows="5" placeholder="Type your message here..." required></textarea>
+            </div>
+            <button type="submit">
+                Send Message
+            </button>
+        </form>
+    </div>
+</section>

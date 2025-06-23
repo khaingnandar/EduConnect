@@ -1,0 +1,19 @@
+
+.privacy-container h3 {
+    font-size: 1.3em;
+    margin-top: 2em;
+    color: #8d5757;
+    border-bottom: 1px solid #e0e0e0;
+    padding-bottom: 0.3em;
+}
+.privacy-container ul {
+    margin-left: 1.5em;
+    margin-bottom: 1em;
+}
+.privacy-container li {
+    margin-bottom: 0.5em;
+}
+.privacy-container p {
+    line-height: 1.7;
+    margin-bottom: 1.2em;
+}
