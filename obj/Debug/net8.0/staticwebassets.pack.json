@@ -5,8 +5,20 @@
       "PackagePath": "staticwebassets/css/_Layout.css"
     },
     {
+      "Id": "/Users/khaingnandar/EduConnect/EduConnect/EduConnect/wwwroot/css/contact.css",
+      "PackagePath": "staticwebassets/css/contact.css"
+    },
+    {
       "Id": "/Users/khaingnandar/EduConnect/EduConnect/EduConnect/wwwroot/css/home.css",
       "PackagePath": "staticwebassets/css/home.css"
+    },
+    {
+      "Id": "/Users/khaingnandar/EduConnect/EduConnect/EduConnect/wwwroot/css/privacy.css",
+      "PackagePath": "staticwebassets/css/privacy.css"
+    },
+    {
+      "Id": "/Users/khaingnandar/EduConnect/EduConnect/EduConnect/wwwroot/css/programs.css",
+      "PackagePath": "staticwebassets/css/programs.css"
     },
     {
       "Id": "/Users/khaingnandar/EduConnect/EduConnect/EduConnect/wwwroot/css/site.css",

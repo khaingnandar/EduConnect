@@ -1,5 +1,101 @@
 @{
     ViewData["Title"] = "Programs";
+
+    // Sample data for demonstration
+    var programs = new List<(string Name, string Cert, string Level)>
+    {
+        ("African and African American Studies", "A.B., Ph.D.", "Undergraduate"),
+        ("American Studies", "Ph.D.", "Graduate"),
+        ("Anthropology", "A.B., A.L.B., M.A., A.L.M., Ph.D.", "Undergraduate"),
+        ("Applied Mathematics", "A.B., Ph.D.", "Undergraduate"),
+        ("Applied Physics", "Ph.D.", "Graduate"),
+        ("Architecture", "M.Arch., M.Arch.", "Graduate"),
+        ("Architecture, Landscape Architecture, and Urban Planning", "Ph.D.", "Graduate"),
+        ("Astronomy", "Ph.D.", "Graduate"),
+        ("Bioengineering", "A.B., S.B., Ph.D.", "Undergraduate"),
+        ("Bioethics", "S.M.", "Graduate"),
+        ("Biological and Biomedical Sciences", "Ph.D.", "Graduate"),
+        ("Biological Sciences in Public Health", "Ph.D.", "Graduate"),
+        ("Biology", "A.L.B., A.L.M.", "Undergraduate"),
+        ("Biomedical Informatics", "M.M.Sc., Ph.D.", "Graduate"),
+        ("Biophysics", "Ph.D.", "Graduate"),
+        // Add more as needed
+    };
+
+    string selectedLevel = Context.Request.Query["level"];
+    if (string.IsNullOrEmpty(selectedLevel)) selectedLevel = "Graduate";
+    var filteredPrograms = programs.Where(p => p.Level == selectedLevel).ToList();
+
+    int pageSize = 5;
+    int totalPrograms = filteredPrograms.Count;
+    int totalPages = (int)Math.Ceiling(totalPrograms / (double)pageSize);
+    int page = 1;
+    var pageQuery = Context.Request.Query["page"];
+    if (!string.IsNullOrEmpty(pageQuery) && int.TryParse(pageQuery, out var parsedPage) && parsedPage > 0)
+    {
+        page = parsedPage;
+    }
+    var pagedPrograms = filteredPrograms.Skip((page - 1) * pageSize).Take(pageSize).ToList();
 }
-<h1 class="text-3xl font-bold mb-4">Programs</h1>
-<p>Explore our diverse academic programs designed to empower your future.</p>
+<link rel="stylesheet" href="~/css/programs.css" asp-append-version="true" />
+
+<section class="programs-section">
+    <!-- Hero Section -->
+    <div class="programs-hero">
+        <h1>Explore programs<br />available at EduConnect</h1>
+        <p>Browse the graduate and undergraduate degrees and majors offered by EduConnect. Learn more about admission requirements, scholarships, and financial aid opportunities.</p>
+    </div>
+
+    <!-- Filters -->
+    <div class="programs-filters">
+        <div class="filter-group stylish-filter-group">
+            <a href="?level=Undergraduate" class="filter-btn@(selectedLevel == "Undergraduate" ? " active" : "")">
+                <span class="filter-icon">&#127891;</span> Undergraduate
+            </a>
+            <a href="?level=Graduate" class="filter-btn@(selectedLevel == "Graduate" ? " active" : "")">
+                <span class="filter-icon">&#128218;</span> Graduate
+            </a>
+        </div>
+    </div>
+
+    <!-- Programs Table -->
+    <div class="programs-table-container">
+        <table class="programs-table modern-table">
+            <caption class="table-caption">Available Programs</caption>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Certification</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var prog in pagedPrograms)
+                {
+                    <tr>
+                        <td>@prog.Name</td>
+                        <td class="text-gray-500">@prog.Cert</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Pagination -->
+    <div class="programs-pagination">
+        <nav class="pagination-nav" aria-label="Pagination">
+            <a href="?level=@selectedLevel&page=@(page-1)" class="pagination-arrow@(page == 1 ? " disabled" : "")" aria-label="Previous page" @(page == 1 ? "tabindex='-1'" : "")>&lt;</a>
+            @for (int i = 1; i <= totalPages; i++)
+            {
+                if (i == page)
+                {
+                    <span class="pagination-page active">@i</span>
+                }
+                else
+                {
+                    <a href="?level=@selectedLevel&page=@i" class="pagination-page">@i</a>
+                }
+            }
+            <a href="?level=@selectedLevel&page=@(page+1)" class="pagination-arrow@(page == totalPages ? " disabled" : "")" aria-label="Next page" @(page == totalPages ? "tabindex='-1'" : "")>&gt;</a>
+        </nav>
+    </div>
+</section>

@@ -4,53 +4,108 @@
 
 <link rel="stylesheet" href="~/css/contact.css" asp-append-version="true" />
 
-<section class="max-w-2xl mx-auto py-10">
-    <h1 class="text-3xl font-bold mb-4">Contact Us</h1>
-    <p class="mb-6">Have questions or need support? Reach out to us using the information below.</p>
-    <div class="contact-info">
-        <div>
-            <strong>Email:</strong> <a href="mailto:support@educonnect.com" class="text-blue-600 underline">support@educonnect.com</a>
-        </div>
-        <div>
-            <strong>Phone:</strong> <a href="tel:+1234567890" class="text-blue-600 underline">+1 (234) 567-890</a>
-        </div>
-        <div class="flex items-start">
-            <span class="inline-block bg-blue-100 text-blue-700 rounded-full p-2 mr-3 mt-1">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17.657 16.657L13.414 12.414a2 2 0 00-2.828 0l-4.243 4.243a8 8 0 1111.314 0z"/><path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-            </span>
-            <div>
-                <strong>Address:</strong>
-                <div class="ml-2 text-gray-700 leading-relaxed" style="line-height: 2">
-                    EduConnect Headquarters<br />
-                    123 University Ave, Building B, 4th Floor<br />
-                    Suite 402, Downtown District<br />
-                    Cityville, State 12345<br />
-                    Country
+<section class="max-w-4xl mx-auto py-10">
+    <div class="contact-section-flex">
+        <div class="md:w-1/2 w-full" id="contact-info-left">
+            <!-- Left: Contact Info -->
+            <h1 class="text-3xl font-bold mb-4">Contact Us</h1>
+            <p class="mb-6">Have questions or need support? Reach out to us using the information below.</p>
+            <div class="contact-info">
+                <div>
+                    <strong>Email:</strong> <a href="mailto:support@educonnect.com" class="text-blue-600 underline">support@educonnect.com</a>
+                </div>
+                <div>
+                    <strong>Phone:</strong> <a href="tel:+1234567890" class="text-blue-600 underline">+1 (234) 567-890</a>
+                </div>
+                <div class="flex items-start">
+                    <span class="inline-block bg-blue-100 text-blue-700 rounded-full p-2 mr-3 mt-1">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17.657 16.657L13.414 12.414a2 2 0 00-2.828 0l-4.243 4.243a8 8 0 1111.314 0z"/><path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                    </span>
+                    <div>
+                        <strong>Address:</strong>
+                        <div class="ml-2 text-gray-700 leading-relaxed" style="line-height: 2">
+                            EduConnect Headquarters<br />
+                            123 University Ave, Building B, 4th Floor<br />
+                            Suite 402, Downtown District<br />
+                            Cityville, State 12345<br />
+                            Country
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <strong>Office Hours:</strong> Monday - Friday, 9:00 AM - 5:00 PM
                 </div>
             </div>
         </div>
-        <div>
-            <strong>Office Hours:</strong> Monday - Friday, 9:00 AM - 5:00 PM
+        <div class="md:w-1/2 w-full" id="contact-form-right">
+            <!-- Right: Send Us a Message Form -->
+            <div class="contact-form-container mt-0 relative">
+                <h2 class="text-xl font-semibold mb-4">Send us a message</h2>
+                <form class="contact-form grid gap-5">
+                    <div>
+                        <label for="fullname" class="block font-medium mb-1">Full Name</label>
+                        <input type="text" id="fullname" name="fullname" placeholder="Enter your fullname" class="w-full border rounded px-3 py-2" required />
+                    </div>
+                    <div>
+                        <label for="email" class="block font-medium mb-1">Email Address</label>
+                        <input type="email" id="email" name="email" placeholder="Enter your email address" class="w-full border rounded px-3 py-2" required />
+                    </div>
+                    <div>
+                        <label for="phone" class="block font-medium mb-1">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" class="w-full border rounded px-3 py-2" />
+                    </div>
+                    <div>
+                        <label for="citizenship" class="block font-medium mb-1">Country of Citizenship</label>
+                        <select id="citizenship" name="citizenship" class="w-full border rounded px-3 py-2">
+                            <option value="">Select</option>
+                            <option value="Myanmar">Myanmar</option>
+                            <option value="Thailand">Thailand</option>
+                            <option value="Vietnam">Vietnam</option>
+                            <option value="China">China</option>
+                            <option value="India">India</option>
+                            <option value="Singapore">Singapore</option>
+                            <option value="Malaysia">Malaysia</option>
+                            <option value="Indonesia">Indonesia</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="education" class="block font-medium mb-1">Current Education Level</label>
+                        <select id="education" name="education" class="w-full border rounded px-3 py-2">
+                            <option value="">Select</option>
+                            <option value="High School">High School</option>
+                            <option value="Diploma">Diploma</option>
+                            <option value="Bachelor's Degree">Bachelor's Degree</option>
+                            <option value="Master's Degree">Master's Degree</option>
+                            <option value="Doctorate">Doctorate</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="program" class="block font-medium mb-1">Program of Interest</label>
+                        <select id="program" name="program" class="w-full border rounded px-3 py-2">
+                            <option value="">Select</option>
+                            <option value="Computer Science">Computer Science</option>
+                            <option value="Business Administration">Business Administration</option>
+                            <option value="Engineering">Engineering</option>
+                            <option value="Medicine">Medicine</option>
+                            <option value="Law">Law</option>
+                            <option value="Arts">Arts</option>
+                            <option value="Science">Science</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="questions" class="block font-medium mb-1">Your Questions</label>
+                        <textarea id="questions" name="questions" rows="4" placeholder="" class="w-full border rounded px-3 py-2"></textarea>
+                    </div>
+                    <div class="flex justify-end mt-4">
+                        <button type="submit" class="bg-red-600 text-white px-6 py-2 rounded-lg font-semibold shadow-md hover:bg-red-700 transition-all" style="position: absolute; right: 0; bottom: -60px;">
+                            Submit Inquiry
+                        </button>
+                    </div>
+                </form>
+            </div>
         </div>
-    </div>
-    <div class="contact-form-container">
-        <h2>Send us a message</h2>
-        <form class="contact-form">
-            <div>
-                <label for="name">Name</label>
-                <input type="text" id="name" name="name" placeholder="Your Name" required />
-            </div>
-            <div>
-                <label for="email">Email</label>
-                <input type="email" id="email" name="email" placeholder="you@email.com" required />
-            </div>
-            <div>
-                <label for="message">Message</label>
-                <textarea id="message" name="message" rows="5" placeholder="Type your message here..." required></textarea>
-            </div>
-            <button type="submit">
-                Send Message
-            </button>
-        </form>
     </div>
 </section>
