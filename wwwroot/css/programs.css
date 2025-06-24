@@ -266,3 +266,65 @@
         gap: 0.15rem;
     }
 }
+.programs-list-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+}
+.programs-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.program-card {
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px solid #e5e7eb;
+    padding: 1.5rem 0;
+}
+.program-card:last-child {
+    border-bottom: none;
+}
+.program-card-main {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 2rem;
+}
+.program-card-title {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+    color: #222;
+}
+.program-card-link {
+    display: inline-block;
+    font-size: 1rem;
+    color: #4f6fa1;
+    text-decoration: none;
+    margin-bottom: 0.5rem;
+}
+.program-card-desc {
+    color: #6b7280;
+    font-size: 1rem;
+    margin-top: 0.25rem;
+    max-width: 700px;
+}
+.program-card-btn {
+    display: inline-block;
+    background: #e5e9ef;
+    color: #222;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    padding: 0.5rem 1.5rem;
+    font-size: 1rem;
+    cursor: pointer;
+    text-align: center;
+    margin-top: 0.5rem;
+    transition: background 0.15s;
+    text-decoration: none;
+}
+.program-card-btn:hover {
+    background: #d1d5db;
+}

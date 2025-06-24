@@ -58,26 +58,48 @@
         </div>
     </div>
 
-    <!-- Programs Table -->
-    <div class="programs-table-container">
-        <table class="programs-table modern-table">
-            <caption class="table-caption">Available Programs</caption>
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Certification</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var prog in pagedPrograms)
-                {
-                    <tr>
-                        <td>@prog.Name</td>
-                        <td class="text-gray-500">@prog.Cert</td>
-                    </tr>
-                }
-            </tbody>
-        </table>
+    <!-- Programs List -->
+    <div class="programs-list-container">
+        <h2 class="programs-list-title">Programs</h2>
+        <ul class="programs-list">
+            @foreach (var prog in pagedPrograms)
+            {
+                <li class="program-card">
+                    <div class="program-card-main">
+                        <div>
+                            <div class="program-card-title">@prog.Name</div>
+                            <a href="#" class="program-card-link">Learn More</a>
+                            <div class="program-card-desc">
+                                <!-- Placeholder description, replace with real data if available -->
+                                @if (prog.Name.Contains("Computer Science"))
+                                {
+                                    <span>A comprehensive program focusing on the principles of computer science, software development, and algorithms.</span>
+                                }
+                                else if (prog.Name.Contains("Digital Media"))
+                                {
+                                    <span>An interdisciplinary program combining artistic expression with technical skills in digital media.</span>
+                                }
+                                else if (prog.Name.Contains("Business"))
+                                {
+                                    <span>A rigorous program designed to prepare students for leadership roles in business and management.</span>
+                                }
+                                else if (prog.Name.Contains("Engineering"))
+                                {
+                                    <span>An advanced degree program for students seeking to conduct original research in engineering.</span>
+                                }
+                                else
+                                {
+                                    <span>Learn more about @prog.Name and its certification: @prog.Cert.</span>
+                                }
+                            </div>
+                        </div>
+                        <div>
+                            <a href="#" class="program-card-btn">Learn More</a>
+                        </div>
+                    </div>
+                </li>
+            }
+        </ul>
     </div>
 
     <!-- Pagination -->
