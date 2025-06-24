@@ -1,0 +1,147 @@
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Event Detail";
+
+    // Simulate the same news list as in Events.cshtml
+    var newsList = new List<dynamic> {
+        new { Date = "October 26, 2024", Title = "New Scholarship Opportunities Announced", Desc = "Exciting news! We've partnered with several universities to offer new scholarship opportunities for international students. Learn more about eligibility and how to apply.", Img = "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80", Location = "Online", Organizer = "EduConnect & Partner Universities", Tags = "Scholarship, Announcement" },
+        new { Date = "October 20, 2024", Title = "Upcoming University Fair", Desc = "Join us at our annual University Fair on November 15th. Meet representatives from top universities, attend information sessions, and get personalized advice.", Img = "https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=400&q=80", Location = "EduConnect Main Hall", Organizer = "EduConnect", Tags = "Fair, University, Networking" },
+        new { Date = "October 15, 2024", Title = "Application Deadlines Approaching", Desc = "Reminder: Application deadlines for Spring 2025 admissions are approaching. Ensure all your documents are submitted on time.", Img = "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=400&q=80", Location = "Online", Organizer = "Admissions Office", Tags = "Deadline, Application" },
+        new { Date = "October 5, 2024", Title = "New Program Spotlight: Data Science", Desc = "Explore our new Data Science program at the University of Tech. This interdisciplinary program combines statistics, computer science, and domain expertise.", Img = "https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80", Location = "University of Tech", Organizer = "University of Tech", Tags = "Program, Data Science" },
+        new { Date = "September 28, 2024", Title = "Agency Events Calendar", Desc = "Check out our events calendar for upcoming webinars, workshops, and information sessions. Register now to secure your spot!", Img = "https://images.unsplash.com/photo-1503676382389-4809596d5290?auto=format&fit=crop&w=400&q=80", Location = "Various", Organizer = "EduConnect", Tags = "Calendar, Events" },
+        new { Date = "September 20, 2024", Title = "Student Success Stories", Desc = "Read inspiring stories from our students who have achieved their dreams.", Img = "https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=400&q=80", Location = "Online", Organizer = "EduConnect", Tags = "Success, Students" },
+        new { Date = "September 10, 2024", Title = "Visa Application Tips", Desc = "Get the latest tips and updates on student visa applications.", Img = "https://images.unsplash.com/photo-1503676382389-4809596d5290?auto=format&fit=crop&w=400&q=80", Location = "Online Webinar", Organizer = "Visa Office", Tags = "Visa, Tips" },
+        new { Date = "August 30, 2024", Title = "EduConnect Annual Meetup", Desc = "Join our annual meetup to network with alumni, current students, and staff. Enjoy workshops, talks, and fun activities.", Img = "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=400&q=80", Location = "EduConnect Campus", Organizer = "EduConnect", Tags = "Meetup, Networking" },
+        new { Date = "August 15, 2024", Title = "New Campus Opening", Desc = "We are excited to announce the opening of our new campus in downtown. Explore new facilities and resources for students.", Img = "https://images.unsplash.com/photo-1465101178521-c1a9136a3b99?auto=format&fit=crop&w=400&q=80", Location = "Downtown Campus", Organizer = "EduConnect", Tags = "Campus, Opening" },
+        new { Date = "July 25, 2024", Title = "Summer Internship Program", Desc = "Applications are now open for our summer internship program. Gain hands-on experience with leading companies.", Img = "https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=400&q=80", Location = "Various Companies", Organizer = "Career Services", Tags = "Internship, Summer" },
+        new { Date = "July 10, 2024", Title = "Faculty Achievements", Desc = "Congratulations to our faculty members for their recent awards and research publications.", Img = "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=400&q=80", Location = "EduConnect", Organizer = "EduConnect", Tags = "Faculty, Awards" },
+        new { Date = "June 30, 2024", Title = "Orientation Week Recap", Desc = "A look back at our successful orientation week for new students, filled with activities and information sessions.", Img = "https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80", Location = "EduConnect Campus", Organizer = "Student Affairs", Tags = "Orientation, Students" },
+        new { Date = "June 15, 2024", Title = "Career Fair Highlights", Desc = "Our recent career fair connected students with top employers. See the highlights and success stories.", Img = "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80", Location = "Main Hall", Organizer = "Career Services", Tags = "Career, Fair" },
+        new { Date = "May 28, 2024", Title = "New Library Resources", Desc = "Discover the latest additions to our library, including digital resources and study spaces.", Img = "https://images.unsplash.com/photo-1503676382389-4809596d5290?auto=format&fit=crop&w=400&q=80", Location = "Library", Organizer = "Library Services", Tags = "Library, Resources" },
+        new { Date = "October 26, 2024", Title = "Groundbreaking Research Reveals New Insights into Climate Change", Desc = @"In a landmark study published today, researchers at the University have unveiled new findings that shed light on the accelerating effects of climate change. The research, led by Dr. Emily Carter, a renowned environmental scientist, provides a comprehensive analysis of recent climate data and offers crucial insights into the urgent need for global action. The study highlights several key areas of concern, including the rapid melting of polar ice caps, the increasing frequency of extreme weather events, and the devastating impact on biodiversity. The findings underscore the interconnectedness of these issues and emphasize the importance of a holistic approach to addressing climate change. Dr. Carter and her team utilized advanced modeling techniques and extensive field data to arrive at their conclusions. Their work builds upon previous research and incorporates the latest scientific advancements, making it a significant contribution to the field. The study also explores potential mitigation strategies and calls for greater collaboration between governments, industries, and communities to implement effective solutions. The research team plans to continue their work, focusing on specific regional impacts and developing targeted interventions. They hope their findings will inform policy decisions and inspire individuals to take action in their own lives. The full report is available on the University's research portal, and a summary of the key findings can be found in the latest issue of the Journal of Environmental Science.", Img = "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80", Author = "Dr. Emily Carter", Tags = "Climate, Research" }
+    };
+
+    // Get event index from route
+    var idStr = Context.Request.Path.Value.Split('/').Last();
+    int id = 0;
+    int.TryParse(idStr, out id);
+
+    var news = (id >= 0 && id < newsList.Count) ? newsList[id] : null;
+}
+@if (news == null)
+{
+    <div class="max-w-2xl mx-auto py-12">
+        <h2 class="text-2xl font-bold mb-4">Event Not Found</h2>
+        <a href="/Home/Events" class="text-blue-600 underline">Back to Events</a>
+    </div>
+}
+else
+{
+    <!-- Add event detail CSS -->
+    <link rel="stylesheet" href="~/css/event_detail.css" />
+    <section class="events-section mb-12">
+        <div class="max-w-3xl mx-auto event-detail-container">
+            <a href="/Home/Events"
+               class="inline-flex items-center gap-2 mb-8 px-4 py-2 bg-[#f9f5f5] text-[#8b3a2b] font-semibold hover:bg-[#8b3a2b] hover:text-white transition"
+               style="text-decoration:none;">
+                <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" class="inline" style="vertical-align:middle;"><path d="M11 15l-5-5 5-5"/></svg>
+                Back to Events List
+            </a>
+            <h1 class="event-detail-title">@news.Title</h1>
+            <div class="event-detail-meta">
+                @if (news.Date != null && news.GetType().GetProperty("Author") != null)
+                {
+                    <span>Published on @news.Date | By @news.Author</span>
+                }
+                else if (news.Date != null)
+                {
+                    <span>Published on @news.Date</span>
+                }
+            </div>
+            <img src="@news.Img" alt="@news.Title" class="event-detail-img" style="max-width:700px; min-height:320px; height:auto;" />
+            <div class="event-detail-desc">
+                <table class="w-full mb-8 border-separate border-spacing-y-2">
+                    <tr>
+                        <td class="py-2 pr-4 text-[#8b3a2b] font-medium w-32 align-top">Date</td>
+                        <td class="py-2 align-top">@news.Date</td>
+                    </tr>
+                    @* If you have a Time property, show it *@
+                    @if (news.GetType().GetProperty("Time") != null)
+                    {
+                        <tr>
+                            <td class="py-2 pr-4 text-[#8b3a2b] font-medium align-top">Time</td>
+                            <td class="py-2 align-top">@news.Time</td>
+                        </tr>
+                    }
+                    <tr>
+                        <td class="py-2 pr-4 text-[#8b3a2b] font-medium align-top">Location</td>
+                        <td class="py-2 align-top">@news.Location</td>
+                    </tr>
+                    <tr>
+                        <td class="py-2 pr-4 text-[#8b3a2b] font-medium align-top">Organizer</td>
+                        <td class="py-2 align-top">@news.Organizer</td>
+                    </tr>
+                </table>
+                <br /><br />
+                @news.Desc
+                <br /><br />
+                <strong>Event Highlights:</strong>
+                <ul style="margin-left:1.5rem; list-style:disc;">
+                    <li>Expert speakers and panel discussions on the latest trends.</li>
+                    <li>Networking opportunities with industry leaders and peers.</li>
+                    <li>Interactive workshops and Q&amp;A sessions.</li>
+                    <li>Access to exclusive resources and follow-up materials.</li>
+                </ul>
+                <br />
+                <strong>Who Should Attend?</strong>
+                <ul style="margin-left:1.5rem; list-style:disc;">
+                    <li>Students and professionals interested in the topic.</li>
+                    <li>Researchers and academics seeking collaboration.</li>
+                    <li>Anyone passionate about making a difference.</li>
+                </ul>
+                <br />
+                <strong>How to Register:</strong>
+                <ul style="margin-left:1.5rem; list-style:disc;">
+                    <li>Visit our <a href="/Home/Events" style="color:#8b3a2b;text-decoration:underline;">Events page</a> for registration details.</li>
+                    <li>Early registration is recommended as seats are limited.</li>
+                </ul>
+                <br />
+                <strong>Contact Information:</strong>
+                <div style="margin-left:1.5rem;">
+                    For questions, email us at <a href="mailto:info@educonnect.com" style="color:#8b3a2b;text-decoration:underline;">info@educonnect.com</a> or call (123) 456-7890.
+                </div>
+            </div>
+            @* Optionally, add speakers if you have them in your news object *@
+            @if (news.GetType().GetProperty("Speakers") != null && news.Speakers != null)
+            {
+                <h3 class="text-lg font-bold mb-4">Speakers</h3>
+                <div class="mb-8">
+                    @foreach (var speaker in news.Speakers)
+                    {
+                        <div class="flex items-center mb-4">
+                            <img src="@speaker.Img" alt="@speaker.Name" class="w-14 h-14 rounded-full object-cover mr-4 border border-gray-200" />
+                            <div>
+                                <div class="font-semibold text-[#2d1a13]">@speaker.Name</div>
+                                <div class="text-[#bfa89c] text-sm">@speaker.Title</div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            }
+            <div class="event-detail-share">
+                <a href="#" class="hover:text-[#1877f3]">
+                    <svg width="20" height="20" fill="currentColor" class="inline"><circle cx="10" cy="10" r="10" fill="#e5e7eb"/><path d="M12.5 10.5h-1v4h-2v-4H8V9h1.5V8c0-.8.4-2 2-2h1.5v1.5H13c-.2 0-.5.1-.5.5v1H13l-.5 1.5z" fill="#1877f3"/></svg>
+                    Share on Facebook
+                </a>
+                <a href="#" class="hover:text-[#1da1f2]">
+                    <svg width="20" height="20" fill="currentColor" class="inline"><circle cx="10" cy="10" r="10" fill="#e5e7eb"/><path d="M15.3 8.1c.01.14.01.29.01.43 0 4.39-3.34 9.46-9.46 9.46-1.88 0-3.63-.55-5.1-1.5.26.03.52.05.79.05 1.56 0 2.99-.53 4.13-1.42-1.46-.03-2.7-.99-3.13-2.31.2.04.41.07.62.07.3 0 .59-.04.86-.12-1.52-.31-2.67-1.65-2.67-3.27v-.04c.45.25.97.4 1.52.42-.9-.6-1.5-1.62-1.5-2.78 0-.61.16-1.18.44-1.67 1.6 1.97 4 3.26 6.7 3.4-.06-.24-.09-.5-.09-.76 0-1.84 1.5-3.34 3.34-3.34.96 0 1.83.4 2.44 1.04.76-.15 1.47-.43 2.11-.82-.25.78-.78 1.43-1.47 1.84.67-.08 1.31-.26 1.91-.53-.44.67-.99 1.26-1.62 1.73z" fill="#1da1f2"/></svg>
+                    Share on Twitter
+                </a>
+                <a href="#" class="hover:text-[#0077b5]">
+                    <svg width="20" height="20" fill="currentColor" class="inline"><circle cx="10" cy="10" r="10" fill="#e5e7eb"/><path d="M7.5 8.5h2v1h.03c.28-.53.97-1.09 2-1.09 2.14 0 2.53 1.41 2.53 3.25v3.34h-2v-2.96c0-.71-.01-1.62-1-1.62-1 0-1.15.78-1.15 1.57v3.01h-2v-6.5zm-1-1.5c-.69 0-1.25-.56-1.25-1.25S5.81 4.5 6.5 4.5s1.25.56 1.25 1.25S7.19 7 6.5 7zm1 8h-2v-6.5h2V15z" fill="#0077b5"/></svg>
+                    Share on LinkedIn
+                </a>
+            </div>
+        </div>
+    </section>
+}

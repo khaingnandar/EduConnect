@@ -9,6 +9,14 @@
       "PackagePath": "staticwebassets/css/contact.css"
     },
     {
+      "Id": "/Users/khaingnandar/EduConnect/EduConnect/EduConnect/wwwroot/css/event.css",
+      "PackagePath": "staticwebassets/css/event.css"
+    },
+    {
+      "Id": "/Users/khaingnandar/EduConnect/EduConnect/EduConnect/wwwroot/css/event_detail.css",
+      "PackagePath": "staticwebassets/css/event_detail.css"
+    },
+    {
       "Id": "/Users/khaingnandar/EduConnect/EduConnect/EduConnect/wwwroot/css/home.css",
       "PackagePath": "staticwebassets/css/home.css"
     },
@@ -31,6 +39,10 @@
     {
       "Id": "/Users/khaingnandar/EduConnect/EduConnect/EduConnect/wwwroot/css/universities.css",
       "PackagePath": "staticwebassets/css/universities.css"
+    },
+    {
+      "Id": "/Users/khaingnandar/EduConnect/EduConnect/EduConnect/wwwroot/css/videos.css",
+      "PackagePath": "staticwebassets/css/videos.css"
     },
     {
       "Id": "/Users/khaingnandar/EduConnect/EduConnect/EduConnect/wwwroot/favicon.ico",

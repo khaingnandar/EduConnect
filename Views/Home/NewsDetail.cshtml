@@ -1,0 +1,327 @@
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "News Detail";
+
+    var newsList = new List<dynamic> {
+        new {
+            Date = "October 26, 2024",
+            Title = "New Scholarship Opportunities Announced",
+            Desc = "Exciting news! We've partnered with several universities to offer new scholarship opportunities for international students. Learn more about eligibility and how to apply.",
+            Img = "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80",
+            Location = "Online",
+            Organizer = "EduConnect & Partner Universities",
+            Tags = "Scholarship, Announcement",
+            Details = new List<string> {
+                "We are thrilled to announce a new round of scholarships available for international students. These scholarships are made possible through partnerships with leading universities.",
+                "Eligibility criteria include academic excellence, leadership qualities, and a commitment to community service. Applicants are encouraged to review the full requirements on our website.",
+                "The application process is straightforward: submit your academic transcripts, a personal statement, and two letters of recommendation.",
+                "Successful candidates will receive full or partial tuition coverage, mentorship opportunities, and access to exclusive networking events.",
+                "For more information, visit our Scholarships page or contact our support team."
+            }
+        },
+        new {
+            Date = "October 20, 2024",
+            Title = "Upcoming University Fair",
+            Desc = "Join us at our annual University Fair on November 15th. Meet representatives from top universities, attend information sessions, and get personalized advice.",
+            Img = "https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=400&q=80",
+            Location = "EduConnect Main Hall",
+            Organizer = "EduConnect",
+            Tags = "Fair, University, Networking",
+            Details = new List<string> {
+                "The University Fair is your chance to connect with representatives from over 50 top universities worldwide.",
+                "Information sessions will cover topics such as admissions, scholarships, and student life.",
+                "Personalized counseling will be available for students seeking guidance on their academic journey.",
+                "Register online to secure your spot and receive updates about the event schedule."
+            }
+        },
+        new {
+            Date = "October 15, 2024",
+            Title = "Application Deadlines Approaching",
+            Desc = "Reminder: Application deadlines for Spring 2025 admissions are approaching. Ensure all your documents are submitted on time.",
+            Img = "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=400&q=80",
+            Location = "Online",
+            Organizer = "Admissions Office",
+            Tags = "Deadline, Application",
+            Details = new List<string> {
+                "This is a reminder that the application deadlines for the Spring 2025 intake are fast approaching.",
+                "Please ensure that you have submitted all required documents, including transcripts, test scores, and letters of recommendation.",
+                "Late applications may not be considered, so we encourage you to apply as soon as possible.",
+                "For detailed information about the application process and requirements, please visit our Admissions page."
+            }
+        },
+        new {
+            Date = "October 5, 2024",
+            Title = "New Program Spotlight: Data Science",
+            Desc = "Explore our new Data Science program at the University of Tech. This interdisciplinary program combines statistics, computer science, and domain expertise.",
+            Img = "https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80",
+            Location = "University of Tech",
+            Organizer = "University of Tech",
+            Tags = "Program, Data Science",
+            Details = new List<string> {
+                "We are excited to announce the launch of our new Data Science program, designed to equip students with the skills needed in the rapidly evolving field of data analytics.",
+                "The program covers key areas such as machine learning, data visualization, and statistical analysis, providing a comprehensive foundation in data science.",
+                "Students will have the opportunity to work on real-world projects and gain hands-on experience with industry-standard tools and technologies.",
+                "For more information about the curriculum and enrollment, please visit the Data Science program page."
+            }
+        },
+        new {
+            Date = "September 28, 2024",
+            Title = "Agency Events Calendar",
+            Desc = "Check out our events calendar for upcoming webinars, workshops, and information sessions. Register now to secure your spot!",
+            Img = "https://images.unsplash.com/photo-1503676382389-4809596d5290?auto=format&fit=crop&w=400&q=80",
+            Location = "Various",
+            Organizer = "EduConnect",
+            Tags = "Calendar, Events",
+            Details = new List<string> {
+                "Stay updated with our latest events, including informative webinars, interactive workshops, and essential information sessions.",
+                "Our events are designed to provide valuable insights and guidance on various aspects of studying abroad and university admissions.",
+                "Registering early is recommended to secure your spot, as spaces may be limited for certain events.",
+                "Visit our Events Calendar page for the full list of upcoming events and registration details."
+            }
+        },
+        new {
+            Date = "September 20, 2024",
+            Title = "Student Success Stories",
+            Desc = "Read inspiring stories from our students who have achieved their dreams.",
+            Img = "https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=400&q=80",
+            Location = "Online",
+            Organizer = "EduConnect",
+            Tags = "Success, Students",
+            Details = new List<string> {
+                "Be inspired by the success stories of our students who have transformed their dreams into reality with determination and hard work.",
+                "Our students come from diverse backgrounds and have pursued a wide range of academic and professional paths.",
+                "These stories highlight the impact of education and the importance of perseverance in achieving one's goals.",
+                "Read more about our students' journeys and learn about the opportunities that await you."
+            }
+        },
+        new {
+            Date = "September 10, 2024",
+            Title = "Visa Application Tips",
+            Desc = "Get the latest tips and updates on student visa applications.",
+            Img = "https://images.unsplash.com/photo-1503676382389-4809596d5290?auto=format&fit=crop&w=400&q=80",
+            Location = "Online Webinar",
+            Organizer = "Visa Office",
+            Tags = "Visa, Tips",
+            Details = new List<string> {
+                "Navigating the student visa application process can be challenging, but we are here to help you with the latest tips and information.",
+                "Our experts will provide guidance on completing your application, preparing for interviews, and avoiding common pitfalls.",
+                "Stay informed about the latest updates and changes to visa regulations that may affect your application.",
+                "Join our upcoming webinar for a comprehensive overview of the student visa application process and have your questions answered by our team."
+            }
+        },
+        new {
+            Date = "August 30, 2024",
+            Title = "EduConnect Annual Meetup",
+            Desc = "Join our annual meetup to network with alumni, current students, and staff. Enjoy workshops, talks, and fun activities.",
+            Img = "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=400&q=80",
+            Location = "EduConnect Campus",
+            Organizer = "EduConnect",
+            Tags = "Meetup, Networking",
+            Details = new List<string> {
+                "Don't miss our annual meetup, a great opportunity to connect with alumni, current students, and staff in a friendly and engaging environment.",
+                "The meetup will feature a variety of workshops, talks, and fun activities designed to inspire and inform.",
+                "Network with peers and professionals, share experiences, and build connections that can help you in your academic and career journey.",
+                "For more details and to register, please visit our Annual Meetup page."
+            }
+        },
+        new {
+            Date = "August 15, 2024",
+            Title = "New Campus Opening",
+            Desc = "We are excited to announce the opening of our new campus in downtown. Explore new facilities and resources for students.",
+            Img = "https://images.unsplash.com/photo-1465101178521-c1a9136a3b99?auto=format&fit=crop&w=400&q=80",
+            Location = "Downtown Campus",
+            Organizer = "EduConnect",
+            Tags = "Campus, Opening",
+            Details = new List<string> {
+                "We are thrilled to announce the opening of our new campus located in the heart of downtown, offering state-of-the-art facilities and resources for our students.",
+                "The new campus features modern classrooms, advanced laboratories, a comprehensive library, and collaborative spaces designed to enhance learning and innovation.",
+                "Join us for the grand opening ceremony and be among the first to explore our new home.",
+                "For more information about the new campus and upcoming events, please visit our New Campus page."
+            }
+        },
+        new {
+            Date = "July 25, 2024",
+            Title = "Summer Internship Program",
+            Desc = "Applications are now open for our summer internship program. Gain hands-on experience with leading companies.",
+            Img = "https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=400&q=80",
+            Location = "Various Companies",
+            Organizer = "Career Services",
+            Tags = "Internship, Summer",
+            Details = new List<string> {
+                "Kick-start your career with our summer internship program, offering valuable hands-on experience with leading companies in your field of study.",
+                "Internships are available in various industries and provide an excellent opportunity to apply your knowledge, develop new skills, and build professional networks.",
+                "Learn more about the application process, internship roles, and how to make the most of your internship experience.",
+                "Visit our Summer Internship Program page for details and to submit your application."
+            }
+        },
+        new {
+            Date = "July 10, 2024",
+            Title = "Faculty Achievements",
+            Desc = "Congratulations to our faculty members for their recent awards and research publications.",
+            Img = "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=400&q=80",
+            Location = "EduConnect",
+            Organizer = "EduConnect",
+            Tags = "Faculty, Awards",
+            Details = new List<string> {
+                "We are proud to acknowledge the outstanding achievements of our faculty members, who have recently received prestigious awards and published impactful research.",
+                "Their hard work, dedication, and contributions to their respective fields have brought recognition to our institution.",
+                "Join us in congratulating our faculty for their remarkable accomplishments and commitment to academic excellence.",
+                "For more information about our faculty members and their work, please visit our Faculty Achievements page."
+            }
+        },
+        new {
+            Date = "June 30, 2024",
+            Title = "Orientation Week Recap",
+            Desc = "A look back at our successful orientation week for new students, filled with activities and information sessions.",
+            Img = "https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80",
+            Location = "EduConnect Campus",
+            Organizer = "Student Affairs",
+            Tags = "Orientation, Students",
+            Details = new List<string> {
+                "Orientation week was a great success, welcoming new students with a series of engaging activities and informative sessions.",
+                "Students had the opportunity to learn about campus resources, meet faculty and staff, and connect with fellow students.",
+                "The week included workshops on academic success, time management, and study skills, as well as social events to build community and camaraderie.",
+                "We look forward to seeing our new students thrive and succeed in their academic journey."
+            }
+        },
+        new {
+            Date = "June 15, 2024",
+            Title = "Career Fair Highlights",
+            Desc = "Our recent career fair connected students with top employers. See the highlights and success stories.",
+            Img = "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80",
+            Location = "Main Hall",
+            Organizer = "Career Services",
+            Tags = "Career, Fair",
+            Details = new List<string> {
+                "The recent career fair was a fantastic opportunity for students to connect with top employers and explore potential career paths.",
+                "Students were able to attend workshops on resume writing, interview skills, and job search strategies, enhancing their employability.",
+                "The event also featured panel discussions with industry experts, providing valuable insights into various fields and professions.",
+                "We encourage all students to take advantage of such opportunities to network and learn from professionals in their desired industry."
+            }
+        },
+        new {
+            Date = "May 28, 2024",
+            Title = "New Library Resources",
+            Desc = "Discover the latest additions to our library, including digital resources and study spaces.",
+            Img = "https://images.unsplash.com/photo-1503676382389-4809596d5290?auto=format&fit=crop&w=400&q=80",
+            Location = "Library",
+            Organizer = "Library Services",
+            Tags = "Library, Resources",
+            Details = new List<string> {
+                "We are excited to announce the latest additions to our library, enhancing our collection of digital resources and study spaces.",
+                "Students can now access a wider range of e-books, online journals, and multimedia resources from anywhere, at any time.",
+                "The library has also introduced new study pods and collaborative spaces, equipped with the latest technology to support group work and individual study.",
+                "Visit our Library Services page to explore the new resources and learn how to make the most of your library experience."
+            }
+        },
+        new {
+            Date = "October 26, 2024",
+            Title = "Groundbreaking Research Reveals New Insights into Climate Change",
+            Desc = "In a landmark study published today, researchers at the University have unveiled new findings that shed light on the accelerating effects of climate change.",
+            Img = "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80",
+            Author = "Dr. Emily Carter",
+            Tags = "Climate, Research",
+            Details = new List<string> {
+                "The research, led by Dr. Emily Carter, a renowned environmental scientist, provides a comprehensive analysis of recent climate data and offers crucial insights into the urgent need for global action.",
+                "The study highlights several key areas of concern, including the rapid melting of polar ice caps, the increasing frequency of extreme weather events, and the devastating impact on biodiversity.",
+                "Dr. Carter and her team utilized advanced modeling techniques and extensive field data to arrive at their conclusions. Their work builds upon previous research and incorporates the latest scientific advancements, making it a significant contribution to the field.",
+                "The study also explores potential mitigation strategies and calls for greater collaboration between governments, industries, and communities to implement effective solutions.",
+                "The research team plans to continue their work, focusing on specific regional impacts and developing targeted interventions. They hope their findings will inform policy decisions and inspire individuals to take action in their own lives.",
+                "The full report is available on the University's research portal, and a summary of the key findings can be found in the latest issue of the Journal of Environmental Science."
+            }
+        }
+    };
+
+    // Get event index from route
+    var idStr = Context.Request.Path.Value.Split('/').Last();
+    int id = 0;
+    int.TryParse(idStr, out id);
+
+    var news = (id >= 0 && id < newsList.Count) ? newsList[id] : null;
+}
+@if (news == null)
+{
+    <div class="max-w-2xl mx-auto py-12">
+        <h2 class="text-2xl font-bold mb-4">Event Not Found</h2>
+        <a href="/Home/Events" class="text-blue-600 underline">Back to Events</a>
+    </div>
+}
+else
+{
+    <!-- Add event detail CSS -->
+    <link rel="stylesheet" href="~/css/event_detail.css" />
+    <section class="events-section mb-12">
+        <div class="max-w-3xl mx-auto event-detail-container">
+            <a href="/Home/Events"
+               class="inline-flex items-center gap-2 mb-8 px-4 py-2 bg-[#f9f5f5] text-[#8b3a2b] font-semibold hover:bg-[#8b3a2b] hover:text-white transition"
+               style="text-decoration:none;">
+                <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" class="inline" style="vertical-align:middle;"><path d="M11 15l-5-5 5-5"/></svg>
+                Back to News List
+            </a>
+            <h1 class="event-detail-title">@news.Title</h1>
+            <div class="event-detail-meta">
+                @if (news.Date != null && news.GetType().GetProperty("Author") != null && !string.IsNullOrEmpty((string)news.Author))
+                {
+                    <span>Published on @news.Date | By @news.Author</span>
+                }
+                else if (news.Date != null)
+                {
+                    <span>Published on @news.Date</span>
+                }
+            </div>
+            <div class="event-detail-desc">
+                <div class="flex w-full grow bg-[#fbfaf9] py-3">
+                    <div class="w-full gap-1 overflow-hidden bg-[#fbfaf9] aspect-[3/2] flex">
+                        <div
+                        class="w-full bg-center bg-no-repeat bg-cover aspect-auto rounded-none flex-1"
+                        style='background-image: url("@news.Img");'
+                        ></div>
+                    </div>
+                </div>
+                <p class="text-[#171311] text-base font-normal leading-normal pb-3 pt-1 px-4">
+                    @news.Desc
+                </p>
+                @if (news.GetType().GetProperty("Details") != null && news.Details != null)
+                {
+                    foreach (var paragraph in news.Details)
+                    {
+                        <p class="text-[#171311] text-base font-normal leading-normal pb-3 pt-1 px-4">
+                            @paragraph
+                        </p>
+                    }
+                }
+            </div>
+            @* Optionally, add speakers if you have them in your news object *@
+            @if (news.GetType().GetProperty("Speakers") != null && news.Speakers != null)
+            {
+                <h3 class="text-lg font-bold mb-4">Speakers</h3>
+                <div class="mb-8">
+                    @foreach (var speaker in news.Speakers)
+                    {
+                        <div class="flex items-center mb-4">
+                            <img src="@speaker.Img" alt="@speaker.Name" class="w-14 h-14 rounded-full object-cover mr-4 border border-gray-200" />
+                            <div>
+                                <div class="font-semibold text-[#2d1a13]">@speaker.Name</div>
+                                <div class="text-[#bfa89c] text-sm">@speaker.Title</div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            }
+            <div class="event-detail-share">
+                <a href="#" class="hover:text-[#1877f3]">
+                    <svg width="20" height="20" fill="currentColor" class="inline"><circle cx="10" cy="10" r="10" fill="#e5e7eb"/><path d="M12.5 10.5h-1v4h-2v-4H8V9h1.5V8c0-.8.4-2 2-2h1.5v1.5H13c-.2 0-.5.1-.5.5v1H13l-.5 1.5z" fill="#1877f3"/></svg>
+                    Share on Facebook
+                </a>
+                <a href="#" class="hover:text-[#1da1f2]">
+                    <svg width="20" height="20" fill="currentColor" class="inline"><circle cx="10" cy="10" r="10" fill="#e5e7eb"/><path d="M15.3 8.1c.01.14.01.29.01.43 0 4.39-3.34 9.46-9.46 9.46-1.88 0-3.63-.55-5.1-1.5.26.03.52.05.79.05 1.56 0 2.99-.53 4.13-1.42-1.46-.03-2.7-.99-3.13-2.31.2.04.41.07.62.07.3 0 .59-.04.86-.12-1.52-.31-2.67-1.65-2.67-3.27v-.04c.45.25.97.4 1.52.42-.9-.6-1.5-1.62-1.5-2.78 0-.61.16-1.18.44-1.67 1.6 1.97 4 3.26 6.7 3.4-.06-.24-.09-.5-.09-.76 0-1.84 1.5-3.34 3.34-3.34.96 0 1.83.4 2.44 1.04.76-.15 1.47-.43 2.11-.82-.25.78-.78 1.43-1.47 1.84.67-.08 1.31-.26 1.91-.53-.44.67-.99 1.26-1.62 1.73z" fill="#1da1f2"/></svg>
+                    Share on Twitter
+                </a>
+                <a href="#" class="hover:text-[#0077b5]">
+                    <svg width="20" height="20" fill="currentColor" class="inline"><circle cx="10" cy="10" r="10" fill="#e5e7eb"/><path d="M7.5 8.5h2v1h.03c.28-.53.97-1.09 2-1.09 2.14 0 2.53 1.41 2.53 3.25v3.34h-2v-2.96c0-.71-.01-1.62-1-1.62-1 0-1.15.78-1.15 1.57v3.01h-2v-6.5zm-1-1.5c-.69 0-1.25-.56-1.25-1.25S5.81 4.5 6.5 4.5s1.25.56 1.25 1.25S7.19 7 6.5 7zm1 8h-2v-6.5h2V15z" fill="#0077b5"/></svg>
+                    Share on LinkedIn
+                </a>
+            </div>
+        </div>
+    </section>
+}

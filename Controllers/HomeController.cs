@@ -28,17 +28,27 @@ public class HomeController : Controller
         return View();
     }
 
-    public IActionResult Admissions()
+    public IActionResult Events()
     {
         return View();
     }
 
-    public IActionResult CampusLife()
+    public IActionResult Videos()
     {
         return View();
     }
 
     public IActionResult ApplyNow()
+    {
+        return View();
+    }
+
+    public IActionResult EventDetail(int id)
+    {
+        return View();
+    }
+
+    public IActionResult NewsDetail(int id)
     {
         return View();
     }

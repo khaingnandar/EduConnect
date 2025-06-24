@@ -103,7 +103,7 @@
     </div>
 
     <!-- Pagination -->
-    <div class="programs-pagination">
+    <div class="pagination">
         <nav class="pagination-nav" aria-label="Pagination">
             <a href="?level=@selectedLevel&page=@(page-1)" class="pagination-arrow@(page == 1 ? " disabled" : "")" aria-label="Previous page" @(page == 1 ? "tabindex='-1'" : "")>&lt;</a>
             @for (int i = 1; i <= totalPages; i++)

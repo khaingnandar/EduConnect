@@ -1,0 +1,181 @@
+@{
+    ViewData["Title"] = "Videos";
+    
+    // Group videos by section, now with more data in each list
+    var featuredVideos = new[] {
+        new { Title = "Study Abroad 101: Your Ultimate Guide", Topic = "Featured Videos", University = "", Country = "", VideoUrl = Url.Content("~/videos/study-abroad-101.mp4"), Description = "Everything you need to know about studying abroad, from choosing a program to applying for visas." },
+        new { Title = "A Day in the Life of a Student at Oxford", Topic = "Featured Videos", University = "Oxford", Country = "UK", VideoUrl = Url.Content("~/videos/oxford-day.mp4"), Description = "Experience a typical day for a student at Oxford University, including classes, extracurricular activities, and social life." },
+        new { Title = "Top Universities in Europe for International Students", Topic = "Featured Videos", University = "", Country = "Europe", VideoUrl = Url.Content("~/videos/top-europe-universities.mp4"), Description = "Discover the best universities in Europe for international students, based on rankings, student reviews, and program offerings." },
+        new { Title = "Why Choose EduConnect?", Topic = "Featured Videos", University = "", Country = "", VideoUrl = Url.Content("~/videos/why-educonnect.mp4"), Description = "Learn why EduConnect is the best platform for your study abroad journey." },
+        new { Title = "Virtual Campus Tour", Topic = "Featured Videos", University = "Harvard", Country = "USA", VideoUrl = Url.Content("~/videos/virtual-campus-tour.mp4"), Description = "Take a virtual tour of Harvard's beautiful campus and facilities." }
+    };
+    var studentLife = new[] {
+        new { Title = "Navigating Campus Life", Topic = "Student Life", University = "", Country = "", VideoUrl = Url.Content("~/videos/campus-life.mp4"), Description = "Tips for adjusting to campus life, including academics, social activities, and resources." },
+        new { Title = "Student Housing Options", Topic = "Student Life", University = "", Country = "", VideoUrl = Url.Content("~/videos/student-housing.mp4"), Description = "Explore different housing options for international students, including dorms, apartments, and homestays." },
+        new { Title = "Making Friends Abroad", Topic = "Student Life", University = "", Country = "", VideoUrl = Url.Content("~/videos/making-friends.mp4"), Description = "Strategies for making friends and building a social network while studying abroad." },
+        new { Title = "Balancing Study and Social Life", Topic = "Student Life", University = "", Country = "", VideoUrl = Url.Content("~/videos/balancing-study-social.mp4"), Description = "How to manage your time and enjoy both academic and social activities." },
+        new { Title = "Clubs and Societies", Topic = "Student Life", University = "Oxford", Country = "UK", VideoUrl = Url.Content("~/videos/clubs-societies.mp4"), Description = "Discover the variety of clubs and societies available at Oxford." }
+    };
+    var infoSessions = new[] {
+        new { Title = "Applying to Universities in the UK", Topic = "Information Sessions", University = "", Country = "UK", VideoUrl = Url.Content("~/videos/uk-application.mp4"), Description = "Learn about the application process for universities in the UK, including entry requirements, deadlines, and tips for a successful application." },
+        new { Title = "Studying in Canada: A Comprehensive Guide", Topic = "Information Sessions", University = "", Country = "Canada", VideoUrl = Url.Content("~/videos/canada-guide.mp4"), Description = "Get a comprehensive overview of studying in Canada, including visa requirements, education system, and student life." },
+        new { Title = "Scholarships and Funding Opportunities", Topic = "Information Sessions", University = "", Country = "", VideoUrl = Url.Content("~/videos/scholarships.mp4"), Description = "Discover various scholarships and funding opportunities available for international students, and learn how to apply." },
+        new { Title = "Visa Application Tips", Topic = "Information Sessions", University = "", Country = "", VideoUrl = Url.Content("~/videos/visa-tips.mp4"), Description = "Essential tips for a successful student visa application." },
+        new { Title = "How to Write a Personal Statement", Topic = "Information Sessions", University = "", Country = "", VideoUrl = Url.Content("~/videos/personal-statement.mp4"), Description = "Advice on crafting a compelling personal statement for your university application." }
+    };
+    var studentExperiences = new[] {
+        new { Title = "My Study Abroad Journey in Paris", Topic = "Student Experiences", University = "", Country = "France", VideoUrl = Url.Content("~/videos/paris-journey.mp4"), Description = "Follow Sarah’s journey as she shares her experiences studying in Paris, including cultural immersion, academic challenges, and personal growth." },
+        new { Title = "Living and Studying in Tokyo", Topic = "Student Experiences", University = "Tokyo", Country = "Japan", VideoUrl = Url.Content("~/videos/tokyo-life.mp4"), Description = "Experience life in Tokyo through the eyes of an international student, covering academics, cultural differences, and daily life." },
+        new { Title = "Exploring Australia as an International Student", Topic = "Student Experiences", University = "Sydney", Country = "Australia", VideoUrl = Url.Content("~/videos/australia-exploring.mp4"), Description = "Join Mark as he explores Australia, sharing insights into studying, working, and traveling as an international student." },
+        new { Title = "From Myanmar to Harvard", Topic = "Student Experiences", University = "Harvard", Country = "USA", VideoUrl = Url.Content("~/videos/myanmar-harvard.mp4"), Description = "A Myanmar student's inspiring story of getting into Harvard." },
+        new { Title = "Life as an International Student in Germany", Topic = "Student Experiences", University = "", Country = "Germany", VideoUrl = Url.Content("~/videos/germany-experience.mp4"), Description = "Hear about the challenges and rewards of studying in Germany." }
+    };
+    // Flatten all videos for unified pagination
+    var allVideos = featuredVideos.Concat(studentLife).Concat(infoSessions).Concat(studentExperiences).ToList();
+    int pageSize = 12; // 3 per topic * 4 topics
+}
+<link rel="stylesheet" href="~/css/videos.css" />
+
+<section class="videos-section mb-12">
+    <div class="max-w-4xl mx-auto py-6">
+        <h2 class="text-3xl font-bold mb-2 text-gray-800">Videos</h2>
+        <p class="text-gray-600 mb-6">Explore our video library for insights into studying abroad, university life, and student experiences. Filter by topic, university, or country to find videos relevant to your interests.</p>
+    </div>
+
+    <div class="flex gap-4 mb-8">
+        <select id="filter-topic" class="border rounded px-3 py-2">
+            <option value="">Topic</option>
+            <option value="Featured Videos">Featured Videos</option>
+            <option value="Student Life">Student Life</option>
+            <option value="Information Sessions">Information Sessions</option>
+            <option value="Student Experiences">Student Experiences</option>
+        </select>
+        <select id="filter-university" class="border rounded px-3 py-2">
+            <option value="">University</option>
+            <option value="Oxford">Oxford</option>
+            <option value="Harvard">Harvard</option>
+            <option value="Tokyo">Tokyo</option>
+            <option value="Sydney">Sydney</option>
+        </select>
+        <select id="filter-country" class="border rounded px-3 py-2">
+            <option value="">Country</option>
+            <option value="UK">UK</option>
+            <option value="USA">USA</option>
+            <option value="Japan">Japan</option>
+            <option value="Australia">Australia</option>
+            <option value="Europe">Europe</option>
+            <option value="Canada">Canada</option>
+            <option value="France">France</option>
+        </select>
+    </div>
+
+    <div id="videos-list" class="grid grid-cols-3 gap-6 mb-10">
+        @for (int i = 0; i < allVideos.Count; i++)
+        {
+            var v = allVideos[i];
+        <div class="video-card"
+             data-topic="@v.Topic"
+             data-university="@v.University"
+             data-country="@v.Country"
+             data-index="@i">
+            <div class="aspect-w-16 aspect-h-9 mb-2 w-full">
+                <video controls
+                       title="@v.Title"
+                       class="rounded w-full h-36 object-cover">
+                    <source src="@v.VideoUrl" type="video/mp4" />
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+            <div class="font-semibold">@v.Title</div>
+            <div class="text-sm text-gray-600">@v.Description</div>
+        </div>
+        }
+    </div>
+
+    <div class="flex justify-center items-center gap-2 mb-10" id="pagination">
+        <nav class="inline-flex shadow-sm rounded-md" aria-label="Pagination" id="pagination-nav">
+            <button id="prev-page" class="relative inline-flex items-center px-3 py-2 rounded-l-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50" aria-label="Previous page">
+                &lt;
+            </button>
+            <!-- Pagination buttons will be rendered here by JS -->
+            <button id="next-page" class="relative inline-flex items-center px-3 py-2 rounded-r-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50" aria-label="Next page">
+                &gt;
+            </button>
+        </nav>
+    </div>
+</section>
+<script>
+    // --- Filtering ---
+    const topicFilter = document.getElementById('filter-topic');
+    const universityFilter = document.getElementById('filter-university');
+    const countryFilter = document.getElementById('filter-country');
+    const videoCards = Array.from(document.querySelectorAll('.video-card'));
+
+    const pageSize = 12;
+    let currentPage = 1;
+
+    function filterVideos() {
+        const topic = topicFilter.value;
+        const university = universityFilter.value;
+        const country = countryFilter.value;
+        videoCards.forEach(card => {
+            const matchTopic = !topic || card.dataset.topic === topic;
+            const matchUniversity = !university || card.dataset.university === university;
+            const matchCountry = !country || card.dataset.country === country;
+            if (matchTopic && matchUniversity && matchCountry) {
+                card.dataset.visible = "1";
+            } else {
+                card.dataset.visible = "0";
+            }
+        });
+        paginateVideos(1); // Reset to first page after filter
+    }
+
+    topicFilter.addEventListener('change', filterVideos);
+    universityFilter.addEventListener('change', filterVideos);
+    countryFilter.addEventListener('change', filterVideos);
+
+    function renderPagination(totalPages) {
+        const nav = document.getElementById('pagination-nav');
+        nav.querySelectorAll('.page-btn, .pagination-ellipsis').forEach(el => el.remove());
+        for (let i = 1; i <= totalPages; i++) {
+            const btn = document.createElement('button');
+            btn.type = 'button';
+            btn.className = 'page-btn relative inline-flex items-center px-3 py-2 border-t border-b border-gray-300 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50';
+            btn.dataset.page = i;
+            btn.textContent = i;
+            if (i === currentPage) {
+                btn.classList.add('bg-indigo-600', 'text-white', 'z-10');
+                btn.classList.remove('bg-white', 'text-gray-700');
+            }
+            btn.addEventListener('click', function() {
+                paginateVideos(i);
+            });
+            nav.insertBefore(btn, document.getElementById('next-page'));
+        }
+    }
+
+    function paginateVideos(page) {
+        const visibleCards = videoCards.filter(card => card.dataset.visible !== "0");
+        const totalPages = Math.ceil(visibleCards.length / pageSize);
+        currentPage = Math.max(1, Math.min(page, totalPages || 1));
+        visibleCards.forEach((card, idx) => {
+            card.style.display = (idx >= (currentPage - 1) * pageSize && idx < currentPage * pageSize) ? '' : 'none';
+        });
+        videoCards.filter(card => card.dataset.visible === "0").forEach(card => card.style.display = 'none');
+        renderPagination(totalPages);
+        document.getElementById('prev-page').disabled = currentPage === 1;
+        document.getElementById('next-page').disabled = currentPage === totalPages || totalPages === 0;
+    }
+
+    document.getElementById('prev-page').addEventListener('click', function() {
+        paginateVideos(currentPage - 1);
+    });
+    document.getElementById('next-page').addEventListener('click', function() {
+        paginateVideos(currentPage + 1);
+    });
+
+    // Initialize
+    videoCards.forEach(card => card.dataset.visible = "1");
+    paginateVideos(1);
+</script>

@@ -1,0 +1,180 @@
+@{
+    ViewData["Title"] = "News & Updates";
+    
+    var allItems = new List<dynamic> {
+        new { Type = "news", Date = "October 26, 2024", Title = "New Scholarship Opportunities Announced", Desc = "Exciting news! We've partnered with several universities to offer new scholarship opportunities for international students. Learn more about eligibility and how to apply.", Img = "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80" },
+        new { Type = "event", Date = "October 20, 2024", Title = "Upcoming University Fair", Desc = "Join us at our annual University Fair on November 15th. Meet representatives from top universities, attend information sessions, and get personalized advice.", Img = "https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=400&q=80" },
+        new { Type = "news", Date = "October 15, 2024", Title = "Application Deadlines Approaching", Desc = "Reminder: Application deadlines for Spring 2025 admissions are approaching. Ensure all your documents are submitted on time.", Img = "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=400&q=80" },
+        new { Type = "event", Date = "October 5, 2024", Title = "New Program Spotlight: Data Science", Desc = "Explore our new Data Science program at the University of Tech. This interdisciplinary program combines statistics, computer science, and domain expertise.", Img = "https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80" },
+        new { Type = "news", Date = "September 28, 2024", Title = "Agency Events Calendar", Desc = "Check out our events calendar for upcoming webinars, workshops, and information sessions. Register now to secure your spot!", Img = "https://images.unsplash.com/photo-1503676382389-4809596d5290?auto=format&fit=crop&w=400&q=80" },
+        new { Type = "event", Date = "September 20, 2024", Title = "Student Success Stories", Desc = "Read inspiring stories from our students who have achieved their dreams.", Img = "https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=400&q=80" },
+        new { Type = "news", Date = "September 10, 2024", Title = "Visa Application Tips", Desc = "Get the latest tips and updates on student visa applications.", Img = "https://images.unsplash.com/photo-1503676382389-4809596d5290?auto=format&fit=crop&w=400&q=80" },
+        new { Type = "event", Date = "August 30, 2024", Title = "EduConnect Annual Meetup", Desc = "Join our annual meetup to network with alumni, current students, and staff. Enjoy workshops, talks, and fun activities.", Img = "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=400&q=80" },
+        new { Type = "news", Date = "August 15, 2024", Title = "New Campus Opening", Desc = "We are excited to announce the opening of our new campus in downtown. Explore new facilities and resources for students.", Img = "https://images.unsplash.com/photo-1465101178521-c1a9136a3b99?auto=format&fit=crop&w=400&q=80" },
+        new { Type = "event", Date = "July 25, 2024", Title = "Summer Internship Program", Desc = "Applications are now open for our summer internship program. Gain hands-on experience with leading companies.", Img = "https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=400&q=80" },
+        new { Type = "news", Date = "July 10, 2024", Title = "Faculty Achievements", Desc = "Congratulations to our faculty members for their recent awards and research publications.", Img = "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=400&q=80" },
+        new { Type = "event", Date = "June 30, 2024", Title = "Orientation Week Recap", Desc = "A look back at our successful orientation week for new students, filled with activities and information sessions.", Img = "https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80" },
+        new { Type = "news", Date = "June 15, 2024", Title = "Career Fair Highlights", Desc = "Our recent career fair connected students with top employers. See the highlights and success stories.", Img = "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80" },
+        new { Type = "event", Date = "May 28, 2024", Title = "New Library Resources", Desc = "Discover the latest additions to our library, including digital resources and study spaces.", Img = "https://images.unsplash.com/photo-1503676382389-4809596d5290?auto=format&fit=crop&w=400&q=80" }
+    };
+
+    var newsList = allItems.Where(x => x.Type == "news").ToList();
+    var eventsList = allItems.Where(x => x.Type == "event").ToList();
+
+    int pageSize = 5;
+    int page = 1;
+    var queryPage = Context.Request.Query["page"];
+    if (!string.IsNullOrEmpty(queryPage) && int.TryParse(queryPage, out var parsedPage) && parsedPage > 0) {
+        page = parsedPage;
+    }
+    int totalNews = newsList.Count;
+    int totalEvents = eventsList.Count;
+    int totalPagesNews = (int)Math.Ceiling(totalNews / (double)pageSize);
+    int totalPagesEvents = (int)Math.Ceiling(totalEvents / (double)pageSize);
+    var pagedNews = newsList.Skip((page - 1) * pageSize).Take(pageSize).ToList();
+    var pagedEvents = eventsList.Skip((page - 1) * pageSize).Take(pageSize).ToList();
+}
+<!-- Add CSS reference -->
+<link rel="stylesheet" href="~/css/event.css" />
+
+@* Tabs for News and Events *@
+@{
+    var tab = Context.Request.Query["tab"].ToString();
+    if (string.IsNullOrEmpty(tab)) tab = "news";
+}
+<section class="events-section mb-12">
+    <div class="max-w-4xl mx-auto py-6">
+        <h1 class="text-3xl font-bold mb-2 text-gray-800">News & Events</h1>
+        <p class="text-gray-600 mb-6">Stay informed with the latest news, events, and announcements from our agency and partner universities.</p>
+        <div class="event-filters">
+            <div class="filter-group stylish-filter-group">
+                <a href="?tab=news"
+                class="filter-btn
+                @(tab == "news"
+                    ? "active"
+                    : "")">
+                    <span class="text-lg mr-2">&#128240;</span> News
+                </a>
+                <a href="?tab=events"
+                class="filter-btn
+                @(tab == "events"
+                    ? "active"
+                    : "")">
+                    <span class="text-lg mr-2">&#128197;</span> Events
+                </a>
+            </div>
+        </div>
+        
+    </div>
+</section>
+@if (tab == "news")
+{
+    <section class="news-section mb-12">
+        <div class="max-w-4xl mx-auto py-6">
+            <h2 class="text-3xl font-bold mb-2 text-gray-800">Latest News</h2>
+        </div>
+        <div class="event-news-list space-y-8 max-w-4xl mx-auto">
+            @for (int idx = 0; idx < pagedNews.Count; idx++)
+            {
+                var news = pagedNews[idx];
+                var realIndex = allItems.IndexOf(news);
+                <div class="event-news-card">
+                    <div style="flex: 1 1 0%; display: flex; flex-direction: column; justify-content: center;">
+                        <div class="event-news-date">@news.Date</div>
+                        <div class="event-news-title">
+                            <a href="/Home/NewsDetail/@realIndex" style="color:inherit; text-decoration:none; cursor:pointer;">
+                                @news.Title
+                            </a>
+                        </div>
+                        <div class="event-news-desc">@news.Desc</div>
+                    </div>
+                    <div style="display: flex; align-items: center;">
+                        <img src="@news.Img" alt="@news.Title" class="event-news-img" />
+                    </div>
+                </div>
+            }
+        </div>
+        <!-- News Pagination -->
+        <div class="pagination mt-8 max-w-4xl mx-auto">
+            <nav class="pagination-nav" aria-label="Pagination">
+                <a href="?tab=news&page=@(page-1)"
+                class="pagination-arrow@(page == 1 ? " disabled" : "")"
+                aria-label="Previous">
+                    <span>&lt;</span>
+                </a>
+                @for (int i = 1; i <= totalPagesNews; i++)
+                {
+                    if (i == page)
+                    {
+                        <span class="pagination-page active">@i</span>
+                    }
+                    else
+                    {
+                        <a href="?tab=news&page=@i" class="pagination-page">@i</a>
+                    }
+                }
+                <a href="?tab=news&page=@(page+1)"
+                class="pagination-arrow@(page == totalPagesNews ? " disabled" : "")"
+                aria-label="Next">
+                    <span>&gt;</span>
+                </a>
+            </nav>
+        </div>
+    </section>
+}
+else
+{
+    <section class="events-section mb-12">
+        <div class="max-w-4xl mx-auto py-6">
+            <h2 class="text-3xl font-bold mb-2 text-gray-800">Upcoming Events</h2>
+        </div>
+        <div class="event-news-list space-y-8 max-w-4xl mx-auto">
+            @for (int idx = 0; idx < pagedEvents.Count; idx++)
+            {
+                var ev = pagedEvents[idx];
+                var realIndex = allItems.IndexOf(ev);
+                <div class="event-news-card">
+                    <div style="flex: 1 1 0%; display: flex; flex-direction: column; justify-content: center;">
+                        <div class="event-news-date">@ev.Date</div>
+                        <div class="event-news-title">
+                            <a href="/Home/EventDetail/@realIndex" style="color:inherit; text-decoration:none; cursor:pointer;">
+                                @ev.Title
+                            </a>
+                        </div>
+                        <div class="event-news-desc">@ev.Desc</div>
+                    </div>
+                    <div style="display: flex; align-items: center;">
+                        <img src="@ev.Img" alt="@ev.Title" class="event-news-img" />
+                    </div>
+                </div>
+            }
+        </div>
+        <!-- Events Pagination -->
+        <div class="pagination mt-8 max-w-4xl mx-auto">
+            <nav class="pagination-nav" aria-label="Pagination">
+                <a href="?tab=events&page=@(page-1)"
+                class="pagination-arrow@(page == 1 ? " disabled" : "")"
+                aria-label="Previous">
+                    <span>&lt;</span>
+                </a>
+                @for (int i = 1; i <= totalPagesEvents; i++)
+                {
+                    if (i == page)
+                    {
+                        <span class="pagination-page active">@i</span>
+                    }
+                    else
+                    {
+                        <a href="?tab=events&page=@i" class="pagination-page">@i</a>
+                    }
+                }
+                <a href="?tab=events&page=@(page+1)"
+                class="pagination-arrow@(page == totalPagesEvents ? " disabled" : "")"
+                aria-label="Next">
+                    <span>&gt;</span>
+                </a>
+            </nav>
+        </div>
+
+    </section>
+}
